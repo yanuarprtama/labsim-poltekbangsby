@@ -136,6 +136,7 @@
                                 </li>
                             </ul>
                         </li>
+                    @if (Auth::user()->role == 'Super Admin')
                         <li class="nav-item">
                             <a href="#" class="nav-link {{ Route::is('lab') ? 'active' : '' }}{{ Route::is('alat') ? 'active' : '' }}{{ Route::is('prodi') ? 'active' : '' }}{{ Route::is('administrator') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -270,6 +271,7 @@
                             </ul>
                         </li>
                     </ul>
+                    @endif
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

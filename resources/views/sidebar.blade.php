@@ -117,11 +117,12 @@
                                 </li>
                             </ul>
                         </li>
+                    @if (Auth::user()->role == 'Super Admin')
                         <li class="nav-item">
                             <a href="#" class="nav-link {{ Route::is('lab') ? 'active' : '' }}{{ Route::is('alat') ? 'active' : '' }}{{ Route::is('prodi') ? 'active' : '' }}{{ Route::is('administrator') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Master Data
+                                    Master Datab saya adalah {{ Auth::user()->role }}
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -250,6 +251,7 @@
                                 </li>
                             </ul>
                         </li>
+                    @endif
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
