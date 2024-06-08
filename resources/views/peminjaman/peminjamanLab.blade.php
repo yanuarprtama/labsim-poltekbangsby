@@ -33,7 +33,7 @@
                             </div>
                             <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="#" class="btn btn-primary">Tambah</a>
+                            <a href="{{ route('formPeminjamanlab') }}" class="btn btn-primary">Tambah</a>
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
