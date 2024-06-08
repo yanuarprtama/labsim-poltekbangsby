@@ -95,7 +95,7 @@ Route::get('/peminjamanlab', [peminjamanLab::class, 'index'])->name('peminjamanl
 Route::post('/peminjamanlab', [peminjamanLab::class, 'store'])->name('peminjamanlab-store')->middleware('auth');
 Route::get('/formPeminjamanlab', [peminjamanLab::class, 'create'])->name('formPeminjamanlab')->middleware('auth');
 Route::get('/konfirmasipeminjaman/{id}', [peminjamanLab::class, 'konfirmasi'])->name('konfirmasipeminjaman')->middleware('auth');
-Route::get('/terima/{id}', [peminjamanLab::class, 'terima'])->name('terima')->middleware('auth');
+Route::get('/terimalab/{id}', [peminjamanLab::class, 'terima'])->name('terimalab')->middleware('auth');
 Route::get('/peminjamanAlat', [peminjamanAlat::class, 'index'])->name('peminjamanalat')->middleware('auth');
 Route::get('/konfirmasipeminjamanalat/{id}', [peminjamanAlat::class, 'konfirmasi'])->name('konfirmasipeminjamanalat')->middleware('auth');
 Route::get('/terima/{id}', [peminjamanAlat::class, 'terima'])->name('terimaalat')->middleware('auth');

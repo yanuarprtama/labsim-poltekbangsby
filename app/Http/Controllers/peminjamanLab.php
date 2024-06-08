@@ -36,7 +36,6 @@ class peminjamanLab extends Controller
     public function konfirmasi(Request $request, $id)
     {
         $data = peminjamanLabModel::find($id);
-
         return view('peminjaman/konfirmasipeminjaman', compact('data'));
     }
     public function terima(Request $request, $id)

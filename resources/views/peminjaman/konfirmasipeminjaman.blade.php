@@ -57,7 +57,7 @@
                             @if($data['status'] == 'DITERIMA'||$data['status'] == 'DIKEMBALIKAN'||$data['status'] == 'DITOLAK'||$data['status'] == 'KADALUWARSA')
                                 {{$data['status'];}}
                             @else
-                            <a href="{{ route('terima',['id'=> $data['id']]) }}" class="btn btn-success mb-3">Terima</a>
+                            <a href="{{ route('terimalab', $data['id']) }}" class="btn btn-success mb-3">Terima</a>
                             @endif
                             <table id="example1" class="table table-bordered table-hover">
                                 <tr>
