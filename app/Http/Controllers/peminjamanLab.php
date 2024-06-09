@@ -20,6 +20,18 @@ class peminjamanLab extends Controller
         return view('peminjaman/formPeminjamanLab', compact('lab'));
     }
 
+    public function check_availability($namalab, $waktu_mulai, $waktu_selesai) 
+    {
+        $transactions = peminjamanLabModel::where('namalab', $namalab)
+            ->where(function ($query) use ($waktu_mulai, $waktu_selesai) {
+                $query->whereBetween('waktu_mulai', [$waktu_mulai, $waktu_selesai])
+                    ->orWhereBetween('waktu_selesai', [$waktu_mulai, $waktu_selesai]);
+            })
+            ->get();
+
+            return $transactions;
+    }
+
     public function store(Request $request)
     {
         // dd($request->all());
@@ -29,6 +41,10 @@ class peminjamanLab extends Controller
         $request->request->add(['status' => 'PENDING']);
 
         // $data = $request->all();
+        $isFree = $this->check_availability($request->namalab, $request->waktu_mulai, $request->waktu_selesai);
+        if (count($isFree) > 0) {
+            return redirect()->back()->with('error', 'Lab sudah terpakai');
+        }
         peminjamanLabModel::create($request->all());
         return redirect('/peminjamanlab');
     }
