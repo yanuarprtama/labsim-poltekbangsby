@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class kritik extends Model
 {
     protected $table = 'kritik';
+    
+    use HasFactory;
+
+    protected $fillable = [
+        'kritik',
+        'saran'
+    ];
 }

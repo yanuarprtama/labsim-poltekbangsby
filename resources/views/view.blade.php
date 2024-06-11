@@ -136,6 +136,14 @@
                                 </li>
                             </ul>
                         </li>
+                    @if (Auth::user()->role == 'User')
+                        <li class="nav-item">
+                            <a href="/tambahkerusakan" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Laporan Kerusakan</p>
+                            </a>
+                        </li>
+                    @endif
                     @if (Auth::user()->role == 'Super Admin')
                         <li class="nav-item">
                             <a href="#" class="nav-link {{ Route::is('lab') ? 'active' : '' }}{{ Route::is('alat') ? 'active' : '' }}{{ Route::is('prodi') ? 'active' : '' }}{{ Route::is('administrator') ? 'active' : '' }}">

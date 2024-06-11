@@ -9,4 +9,8 @@ class peminjamanAlatModel extends Model
 {
     protected $table = 'peminjaman_alats';
     protected $guarded = ["id"];
+    public function alat()
+    {
+        return $this->belongsTo(alatModel::class);
+    }
 }

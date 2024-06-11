@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Form Peminjaman Laboratorium</h1>
+                    <h1>Form Peminjaman Alat</h1>
                 </div>
                 <div class="error-message">
                     @if ($errors->any())
@@ -62,27 +62,27 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Form Peminjaman</h3>
+                            <h3 class="card-title">Form Peminjaman alat</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="row g-3" action="{{ route('peminjamanlab-store') }}" method="post">
+                            <form class="row g-3" action="{{ route('peminjamanalat-store') }}" method="post">
                                 @csrf
                                 <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">NIT</label>
-                                    <input type="text" class="form-control" id="inputEmail4" name="nit_pengguna" value="{{ Auth::user()->nomorinduk }}" readonly>
+                                    <label for="nit_pengguna" class="form-label">NIT</label>
+                                    <input type="text" class="form-control" id="nit_pengguna" name="nit_pengguna" value="{{ Auth::user()->nomorinduk }}" readonly>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="inputPassword4" name="nama_pengguna" value="{{ Auth::user()->name }}" readonly>
+                                    <label for="nama_pengguna" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="nama_pengguna" name="nama_pengguna" value="{{ Auth::user()->name }}" readonly>
                                 </div>
                                 <div class="col-12">
                                     <label for="course" class="form-label">Program Studi</label>
-                                    <input type="text" class="form-control" id="course" name="" value="{{ Auth::user()->prodi }}" readonly>
+                                    <input type="text" class="form-control" id="course" name="course" value="{{ Auth::user()->prodi }}" readonly>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputState" class="form-label">Laboratorium</label>
-                                    <select id="inputState" class="form-select" name="namalab" required>
+                                    <label for="namalab" class="form-label">Laboratorium</label>
+                                    <select id="namalab" class="form-select" name="namalab" required>
                                         <option selected disabled>Choose...</option>
                                         @foreach($lab as $l)
                                         <option value="{{ $l->id }}">{{ $l->nama }}</option>
@@ -90,8 +90,8 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Mata Kuliah</label>
-                                    <input type="text" class="form-control" id="inputMatKul" name="mata_kuliah" required>
+                                    <label for="matakuliah" class="form-label">Mata Kuliah</label>
+                                    <input type="text" class="form-control" id="matakuliah" name="matakuliah" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="time-start">Jam Mulai:</label>
@@ -110,8 +110,8 @@
                                     <input type="text" class="form-control" id="inputPassword4" name="praktikum"  required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="jumlah_peserta" class="form-label">Jumlah Pengguna</label>
-                                    <input type="number" class="form-control" id="jumlah_peserta" name="jumlah_peserta"  required>
+                                    <label for="alat_item" class="form-label">Alat </label>
+                                    <input type="text" class="form-control" id="alat_item" name="alat_item"  required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="jenis_peminjaman" class="form-label">Jenis Penggunaan</label>

@@ -54,15 +54,22 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            @if (Auth::user()->role == 'Super Admin'&&'admin')
                             @if($data['status'] == 'DITERIMA'||$data['status'] == 'DIKEMBALIKAN'||$data['status'] == 'DITOLAK'||$data['status'] == 'KADALUWARSA')
                                 {{$data['status'];}}
                             @else
                             <a href="{{ route('terima',['id'=> $data['id']]) }}" class="btn btn-success mb-3">Terima</a>
+                            <a href="{{ route('tolak',['id'=> $data['id']]) }}" class="btn btn-danger mb-3">Tolak</a>
+                            @endif
                             @endif
                             <table id="example1" class="table table-bordered table-hover">
                                 <tr>
                                     <th>nomor peminjaman</th>
                                     <td>{{$data['nomor_peminjaman']}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Lab</th>
+                                    <td>{{ $data['namalab'] }}</td>
                                 </tr>
                                 <tr>
                                     <th>Mata Kuliah</th>
@@ -110,7 +117,7 @@
                                 </tr>
                                 <tr>
                                     <th>jumlah pengguna</th>
-                                    <td>{{$data['jumlah_pengguna']}}</td>
+                                    <td>{{$data['jumlah_peserta']}}</td>
                                 </tr>
                                 <tr>
                                     <th>keterangan</th>

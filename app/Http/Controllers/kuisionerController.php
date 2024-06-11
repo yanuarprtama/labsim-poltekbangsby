@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\kritik;
-use Illuminate\Http\Request;
 use App\Models\kuisioner;
+use App\Models\perawatanLab;
+use Illuminate\Http\Request;
+use App\Models\peminjamanLabModel;
+use Illuminate\Support\Facades\DB;
+use App\Models\peminjamanAlatModel;
+use App\Http\Controllers\Controller;
 
 class kuisionerController extends Controller
 {
@@ -72,4 +77,33 @@ class kuisionerController extends Controller
         }
         return redirect('/kritiksaran');
     }
+    public function store(Request $request)
+{  
+    $request->validate([
+        'kritik' => 'required', 
+        'saran' => 'required',
+        'nomor_peminjaman' => 'required'
+        ]);
+    // dd($request->all());
+        
+    // Store the kritik and saran
+        Kritik::create([
+            'kritik' => $request->kritik,
+            'saran' => $request->saran,
+            'nomor_peminjaman' => $request->nomor_peminjaman
+            ]);
+
+            // $checkPeminjamanLab = peminjamanLabModel::where('nomor_peminjaman',$request->nomor_pemijaman)->count();
+            // dd($checkPeminjamanLab);
+
+    // Update the status of the peminjaman to "DIKEMBALIKAN"
+    $peminjaman = peminjamanLabModel::where('nomor_peminjaman', $request->nomor_peminjaman)->update([
+        "status"=>"DIKEMBALIKAN"
+    ]);
+    
+
+    return redirect()->back()->with('success', 'Kritik dan saran berhasil dikirim dan status peminjaman telah diperbarui.');
+}
+
+
 }

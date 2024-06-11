@@ -89,18 +89,27 @@ Route::post('/updatepertanyaan/{id}', [kuisionerController::class, 'update'])->n
 Route::delete('/hapuspertanyaan/{id}', [kuisionerController::class, 'hapus'])->name('hapuspertanyaan')->middleware('auth');
 
 Route::get('/kritiksaran', [kuisionerController::class, 'kritiksaran'])->name('kritiksaran')->middleware('auth');
+Route::post('/kritiksaran', [kuisionerController::class, 'store'])->name('kritiksaran.store')->middleware('auth');
 Route::delete('/hapuskritik/{id}', [kuisionerController::class, 'hapuskritik'])->name('hapuskritik')->middleware('auth');
 
 Route::get('/peminjamanlab', [peminjamanLab::class, 'index'])->name('peminjamanlab')->middleware('auth');
 Route::post('/peminjamanlab', [peminjamanLab::class, 'store'])->name('peminjamanlab-store')->middleware('auth');
 Route::get('/formPeminjamanlab', [peminjamanLab::class, 'create'])->name('formPeminjamanlab')->middleware('auth');
 Route::get('/konfirmasipeminjaman/{id}', [peminjamanLab::class, 'konfirmasi'])->name('konfirmasipeminjaman')->middleware('auth');
-Route::get('/terima/{id}', [peminjamanLab::class, 'terima'])->name('terima')->middleware('auth');
-Route::get('/peminjamanAlat', [peminjamanAlat::class, 'index'])->name('peminjamanalat')->middleware('auth');
-Route::get('/konfirmasipeminjamanalat/{id}', [peminjamanAlat::class, 'konfirmasi'])->name('konfirmasipeminjamanalat')->middleware('auth');
-Route::get('/terima/{id}', [peminjamanAlat::class, 'terima'])->name('terimaalat')->middleware('auth');
+Route::get('/terimalab/{id}', [peminjamanLab::class, 'terima'])->name('terima')->middleware('auth');
+Route::get('/tolaklab/{id}', [peminjamanLab::class, 'tolak'])->name('tolak')->middleware('auth');
 Route::get('/pengembalianLab', [pengembalianLab::class, 'index'])->name('pengembalianlab')->middleware('auth');
+Route::post('/peminjaman/kembalikan/{id}', [peminjamanLab::class, 'kembalikanlab'])->name('kembalikanPeminjaman');
+
+Route::get('/peminjamanAlat', [peminjamanAlat::class, 'index'])->name('peminjamanalat')->middleware('auth');
+Route::post('/peminjamanAlat', [peminjamanAlat::class, 'store'])->name('peminjamanalat-store')->middleware('auth');
+Route::get('/formPeminjamanAlat', [peminjamanAlat::class, 'create'])->name('formPeminjamanAlat')->middleware('auth');
+Route::get('/konfirmasipeminjamanalat/{id}', [peminjamanAlat::class, 'konfirmasi'])->name('konfirmasipeminjamanalat')->middleware('auth');
+Route::get('/terimaalat/{id}', [peminjamanAlat::class, 'terimaalat'])->name('terimaalat')->middleware('auth');
+Route::get('/tolakalat/{id}', [peminjamanAlat::class, 'tolakalat'])->name('tolakalat')->middleware('auth');
 Route::get('/pengembalianAlat', [PengembalianAlatController::class, 'index'])->name('pengembalianalat')->middleware('auth');
+Route::get('/peminjaman/kembalikan/{id}', [peminjamanAlat::class, 'kembalikanalat'])->name('kembalikanPeminjamanAlat');
+
 
 Route::get('/perawatan', [PerawatanLabController::class, 'index'])->name('perawatan')->middleware('auth');
 Route::get('/tambahperawatan', [PerawatanLabController::class, 'tambah'])->name('tambahperawatan')->middleware('auth');

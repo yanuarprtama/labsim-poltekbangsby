@@ -72,6 +72,15 @@
                         <label for="exampleInputPassword1">Password</label>
                         <input type="text" name="password" class="form-control" id="exampleInputPassword1" placeholder="Input Password..........">
                     </div>
+                    {{-- <div class="form-group">
+                        <label for="inputState" class="form-label">Laboratorium</label>
+                        <select id="inputState" class="form-select" name="namalab" required>
+                            <option selected disabled>Choose...</option>
+                            @foreach($lab as $l)
+                            <option value="{{ $l->id }}">{{ $l->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div> --}}
                     <div class="form-group">
                         <label for="exampleInputPassword1">Role</label>
                         <select name="role" id="role" name="role" class="form-control">
