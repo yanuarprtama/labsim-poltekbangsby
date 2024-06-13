@@ -96,11 +96,11 @@ Route::get('/peminjamanlab', [peminjamanLab::class, 'index'])->name('peminjamanl
 Route::post('/peminjamanlab', [peminjamanLab::class, 'store'])->name('peminjamanlab-store')->middleware('auth');
 Route::get('/formPeminjamanlab', [peminjamanLab::class, 'create'])->name('formPeminjamanlab')->middleware('auth');
 Route::get('/konfirmasipeminjaman/{id}', [peminjamanLab::class, 'konfirmasi'])->name('konfirmasipeminjaman')->middleware('auth');
+
 Route::get('/terimalab/{id}', [peminjamanLab::class, 'terima'])->name('terima')->middleware('auth');
 Route::get('/tolaklab/{id}', [peminjamanLab::class, 'tolak'])->name('tolak')->middleware('auth');
 Route::get('/pengembalianLab', [pengembalianLab::class, 'index'])->name('pengembalianlab')->middleware('auth');
 Route::post('/peminjaman/kembalikan/{id}', [peminjamanLab::class, 'kembalikanlab'])->name('kembalikanPeminjaman');
-
 Route::get('/peminjamanAlat', [peminjamanAlat::class, 'index'])->name('peminjamanalat')->middleware('auth');
 Route::post('/peminjamanAlat', [peminjamanAlat::class, 'store'])->name('peminjamanalat-store')->middleware('auth');
 Route::get('/formPeminjamanAlat', [peminjamanAlat::class, 'create'])->name('formPeminjamanAlat')->middleware('auth');
