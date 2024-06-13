@@ -43,7 +43,6 @@ class prodi extends Controller
         $data['kode'] = $request->kode;
         $data['nama'] = $request->nama;
         $data['deskripsi'] = $request->deskripsi;
-        $data['gambar'] = $namefile;
         $data['status'] = $request->status;
 
         prodiModel::Create($data);

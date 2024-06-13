@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>Kode</th>
                                         <th>Nama</th>
-                                        <th>Gambar</th>
+                                        <th>Deskripsi</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -49,7 +49,8 @@
                                     <tr>
                                         <td>{{$dt['kode']}}</td>
                                         <td>{{$dt['nama']}}</td>
-                                        <td><img style="width: 100px; height: 80px;" src="assets/img/prodi/{{$dt['gambar']}}" alt="gambar"></td>
+                                        <td>{{$dt['deskripsi']}}</td>
+                                        {{-- <td><img style="width: 100px; height: 80px;" src="assets/img/prodi/{{$dt['gambar']}}" alt="gambar"></td> --}}
                                         <td>{{$dt['status']}}</td>
                                         <td><a href="{{ route('editprodi',['id'=> $dt['id']]) }}" class="btn btn-warning"><i class="fa-solid fa-edit"></i></a> | <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$dt['id']}}"><i class="fa-solid fa-trash"></i></button> | <a href="{{ route('detailprodi',['id'=> $dt['id']]) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a></td>
                                     </tr>
@@ -84,7 +85,7 @@
                                     <tr>
                                         <th>Kode</th>
                                         <th>Nama</th>
-                                        <th>Gambar</th>
+                                        <th>Deskripsi</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>

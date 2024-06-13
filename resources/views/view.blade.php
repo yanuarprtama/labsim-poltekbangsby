@@ -136,15 +136,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @if (Auth::user()->role == 'User')
-                        <li class="nav-item">
-                            <a href="/tambahkerusakan" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Kerusakan</p>
-                            </a>
-                        </li>
-                    @endif
-                    @if (Auth::user()->role == 'Super Admin')
+                    @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
                         <li class="nav-item">
                             <a href="#" class="nav-link {{ Route::is('lab') ? 'active' : '' }}{{ Route::is('alat') ? 'active' : '' }}{{ Route::is('prodi') ? 'active' : '' }}{{ Route::is('administrator') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -195,12 +187,6 @@
                                         <p>Pertanyaan</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="/jawaban" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Jawaban</p>
-                                    </a>
-                                </li> --}}
                                 <li class="nav-item">
                                     <a href="/kritiksaran" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -209,29 +195,6 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link {{ Route::is('halaman') ? 'active' : '' }}{{ Route::is('slider') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Konten
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/halaman" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Halaman</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/slider" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Slider</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link {{ Route::is('perawatan')||Route::is('kerusakan') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-gear"></i>
@@ -247,12 +210,14 @@
                                         <p>Perawatan Lab</p>
                                     </a>
                                 </li>
+                                @if (Auth::user()->role == 'Super Admin'|| Auth::user()->role == 'Admin')
                                 <li class="nav-item">
                                     <a href="/kerusakan" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Laporan Kerusakan</p>
                                     </a>
                                 </li>
+                                @endif
                             </ul>
                         </li>
                         <li class="nav-item">

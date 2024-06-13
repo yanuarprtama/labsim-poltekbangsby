@@ -21,13 +21,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edit Data Laboratorium & Simulator</h1>
+                    <h1>Edit Data User</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/lab">Daftar Lab</a></li>
-                        <li class="breadcrumb-item active">Edit Lab</li>
+                        <li class="breadcrumb-item"><a href="/lab">Daftar User</a></li>
+                        <li class="breadcrumb-item active">Edit User</li>
                     </ol>
                 </div>
             </div>
@@ -44,7 +44,7 @@
               <!-- general form elements -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Edit Data Lab</h3>
+                  <h3 class="card-title">Edit Data User</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -53,13 +53,17 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label for="nomorinduk">nomor induk</label>
-                      <input type="text" name="nomorinduk" class="form-control" id="nomorinduk" placeholder="Masukkan nomorinduk" value="{{$data['nomorinduk']}}">
+                      <input type="text" name="nomorinduk" class="form-control" id="nomorinduk" value="{{$data['nomorinduk']}}">
                     </div>
                     <div class="form-group">
-                      <label for="Nama">Nama</label>
-                      <input type="text" name="nama" class="form-control" id="Nama" placeholder="Nama" value="{{$data['name']}}">
+                      <label for="nama">Nama</label>
+                      <input type="text" name="nama" class="form-control" id="nama" value="{{$data['nama']}}">
                     </div>
-                      <div class="form-group">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                        <input type="text" name="password" class="form-control" id="exampleInputPassword1" placeholder="Input Password..........">
+                    </div>
+                    <div class="form-group">
                         <label for="role">Role</label>
                         <select name="role" class="form-control" id="role">
                           <option value="{{$data['role']}}">{{$data['role']}}</option>
@@ -67,7 +71,24 @@
                           <option value="Admin">Admin</option>
                           <option value="User">User</option>
                         </select>
-                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="prodi">Prodi</label>
+                      <select name="prodi" id="prodi" name="prodi" class="form-control">
+                          <option value="{{ $data['prodi'] }}">{{ $data['prodi'] }}</option>
+                          @foreach ($prodi as $p)
+                          <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                          @endforeach
+                      </select>    
+                  </div>
+                  <div class="form-group">
+                    <label for="pengguna">Jenis Pengguna</label>
+                    <select name="pengguna" id="pengguna" class="form-control">
+                        <option value="Admin Lab">Admin Lab</option>
+                        <option value="Dosen">Dosen</option>
+                        <option value="Taruna">Taruna</option>
+                    </select>    
+                </div>
                   </div>
                   <!-- /.card-body -->
   

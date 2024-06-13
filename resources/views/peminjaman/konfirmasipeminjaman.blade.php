@@ -54,7 +54,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @if (Auth::user()->role == 'Super Admin'&&'admin')
+                            @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
                             @if($data['status'] == 'DITERIMA'||$data['status'] == 'DIKEMBALIKAN'||$data['status'] == 'DITOLAK'||$data['status'] == 'KADALUWARSA')
                                 {{$data['status'];}}
                             @else
