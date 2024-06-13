@@ -33,8 +33,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Peminjaman Lab</a></li>
-                        <li class="breadcrumb-item active">Detail Peminjaman Lab</li>
+                        <li class="breadcrumb-item"><a href="#">Peminjaman Alat</a></li>
+                        <li class="breadcrumb-item active">Detail Peminjaman Alat</li>
                     </ol>
                 </div>
             </div>
@@ -45,7 +45,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <a href="/peminjamanlab" class="btn btn-primary mb-3"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+            <a href="/peminjamanAlat" class="btn btn-primary mb-3"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -54,10 +54,13 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            @if (Auth::user()->role == 'Super Admin'&&'admin')
                             @if($data['status'] == 'DITERIMA'||$data['status'] == 'DIKEMBALIKAN'||$data['status'] == 'DITOLAK'||$data['status'] == 'KADALUWARSA')
                                 {{$data['status'];}}
                             @else
-                            <a href="{{ route('terima',['id'=> $data['id']]) }}" class="btn btn-success mb-3">Terima</a>
+                            <a href="{{ route('terimaalat',['id'=> $data['id']]) }}" class="btn btn-success mb-3">Terima</a>
+                            <a href="{{ route('tolakalat',['id'=> $data['id']]) }}" class="btn btn-danger mb-3">Tolak</a>
+                            @endif
                             @endif
                             <table id="example1" class="table table-bordered table-hover">
                                 <tr>
@@ -66,7 +69,7 @@
                                 </tr>
                                 <tr>
                                     <th>Item</th>
-                                    <td>{{$data['kode_item']}}</td>
+                                    <td>{{$data['alat_item']}}</td>
                                 </tr>
                                 <tr>
                                     <th>Nama Pengguna</th>
@@ -74,15 +77,19 @@
                                 </tr>
                                 <tr>
                                     <th>Tanggal Pinjam</th>
-                                    <td>{{$data['tanggal_pinjam']}}</td>
+                                    <td>{{$data['waktu_mulai']}}</td>
                                 </tr>
                                 <tr>
                                     <th>Tanggal Kembali</th>
-                                    <td>{{$data['tanggal_kembali']}}</td>
+                                    <td>{{$data['waktu_selesai']}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Kondisi</th>
-                                    <td>{{$data['kondisi']}}</td>
+                                    <th>Mata kuliah</th>
+                                    <td>{{$data['matakuliah']}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Jenis Peminjaman</th>
+                                    <td>{{$data['jenis_peminjaman']}}</td>
                                 </tr>
                                 <tr>
                                     <th>Status</th>

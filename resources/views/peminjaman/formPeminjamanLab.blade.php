@@ -83,8 +83,8 @@
                                     <input type="text" class="form-control" id="inputPassword4" name="nama_pengguna" value="{{ Auth::user()->name }}" readonly>
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputAddress" class="form-label">Program Studi</label>
-                                    <input type="text" class="form-control" id="inputAddress" name="" value="{{ Auth::user()->nama }}" readonly>
+                                    <label for="course" class="form-label">Program Studi</label>
+                                    <input type="text" class="form-control" id="course" name="" value="{{ Auth::user()->prodi }}" readonly>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputState" class="form-label">Laboratorium</label>
@@ -101,11 +101,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="time-start">Jam Mulai:</label>
-                                    <input type="datetime-local" id="time-start" value="2024-05-08 08:15" class="form-control" name="waktu_mulai" required>
+                                    <input type="datetime-local" id="time-start" class="form-control" name="waktu_mulai" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="time-start">Jam Selesai:</label>
-                                    <input type="datetime-local" id="time-start" value="2024-05-08 08:15" class="form-control" name="waktu_selesai" required>
+                                    <label for="time-end">Jam Selesai:</label>
+                                    <input type="datetime-local" id="time-end" class="form-control" name="waktu_selesai" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputEmail4" class="form-label">Dosen Pengajar</label>
@@ -116,12 +116,20 @@
                                     <input type="text" class="form-control" id="inputPassword4" name="praktikum"  required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Jumlah</label>
-                                    <input type="text" class="form-control" id="inputPassword4" name="jumlah_peserta"  required>
+                                    <label for="jumlah_peserta" class="form-label">Jumlah Pengguna</label>
+                                    <input type="number" class="form-control" id="jumlah_peserta" name="jumlah_peserta"  required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="jenis_peminjaman" class="form-label">Jenis Penggunaan</label>
+                                    <select id="jenis_peminjaman" class="form-select" name="jenis_peminjaman" required>
+                                        <option selected disabled>Choose...</option>
+                                        <option>Perkuliahan</option>
+                                        <option>Penelitian</option>
+                                    </select>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
                                         <label class="form-check-label" for="gridCheck">
                                             Data yang diisikan sudah benar
                                         </label>
@@ -204,6 +212,32 @@
             autoWidth: false,
             responsive: true,
         });
+    });
+    function updateDateTime() {
+    var date = new Date();
+    var year = date.getFullYear().toString().padStart(4, '0');
+    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+    var day = date.getDate().toString().padStart(2, '0');
+    var hours = date.getHours().toString().padStart(2, '0');
+    var minutes = date.getMinutes().toString().padStart(2, '0');
+    
+    var dateTimeString = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+    document.getElementById('time-start').value = dateTimeString;
+    document.getElementById('time-end').value = dateTimeString;
+    }
+
+    // Panggil fungsi updateDateTime setiap detik
+    updateDateTime()
+    var intervalID = setInterval(updateDateTime, 1000);
+    var timeStartInput = document.getElementById('time-start');
+    var timeEndInput = document.getElementById('time-end');
+
+    timeStartInput.addEventListener('input', function() {
+    clearInterval(intervalID); // Hentikan pembaruan otomatis
+    });
+
+    timeEndInput.addEventListener('input', function() {
+    clearInterval(intervalID); // Hentikan pembaruan otomatis
     });
 </script>
 </body>

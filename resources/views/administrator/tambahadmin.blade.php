@@ -80,6 +80,23 @@
                             <option value="User">User</option>
                         </select>    
                     </div>
+                    <div class="form-group">
+                        <label for="prodi">Prodi</label>
+                        <select name="prodi" id="prodi" name="prodi" class="form-control">
+                            <option selected disabled>Pilih Prodi...</option>
+                            @foreach ($prodi as $p)
+                            <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                            @endforeach
+                        </select>    
+                    </div>
+                    <div class="form-group">
+                        <label for="pengguna">Jenis Pengguna</label>
+                        <select name="pengguna" id="pengguna" class="form-control">
+                            <option value="Admin Lab">Admin Lab</option>
+                            <option value="Dosen">Dosen</option>
+                            <option value="Taruna">Taruna</option>
+                        </select>    
+                    </div>
                   </div>
                   <!-- /.card-body -->
   

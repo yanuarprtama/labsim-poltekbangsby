@@ -79,6 +79,15 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <label for="inputState" class="form-label">Laboratorium</label>
+                        <select id="inputState" class="form-select" name="namalab" required>
+                            <option selected disabled>Choose...</option>
+                            @foreach($lab as $l)
+                            <option value="{{ $l->id }}">{{ $l->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                   </div>
                   <!-- /.card-body -->
   

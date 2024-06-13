@@ -50,7 +50,7 @@
                                     @foreach ($data as $dt)
                                     <tr>
                                         <td>{{$dt['nomorinduk']}}</td>
-                                        <td>{{$dt['name']}}</td>
+                                        <td>{{$dt['nama']}}</td>
                                         <td>{{$dt['role']}}</td>
                                         @if (Auth::user()->role == 'Super Admin')
                                         <td><a href="{{ route('editadministrator',['id'=> $dt['id']]) }}" class="btn btn-warning"><i class="fa-solid fa-edit"></i></a> | <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$dt['id']}}"><i class="fa-solid fa-trash"></i></button> | <a href="{{ route('detailadministrator',['id'=> $dt['id']]) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a></td>
