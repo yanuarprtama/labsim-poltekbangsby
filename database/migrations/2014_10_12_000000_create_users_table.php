@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nomorinduk')->unique();
             $table->string('password');
             $table->string('role');
+            $table->string('jenis_pengguna');
             $table->rememberToken();
             $table->timestamps();
         });
